@@ -1,0 +1,12 @@
+{
+	"name": "agentic-harness",
+	"displayName": "Agentic Harness",
+	"description": "Tool-backed workflow discipline (TDD loops, and more to come) shared with the pi coding agent via agentic-harness.core.",
+	"version": "0.1.0",
+	"author": {
+		"name": "Joel Gerber"
+	},
+	"homepage": "https://github.com/Jitsusama/agentic-harness.claude",
+	"repository": "https://github.com/Jitsusama/agentic-harness.claude",
+	"license": "MIT"
+}
