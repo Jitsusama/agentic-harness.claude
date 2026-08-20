@@ -54,6 +54,17 @@ echo '{}' | agentic-harness-core memory recall
 Returns an array of facts. Narrow with `query`, or lower `limit`
 (default 20), when the result is too broad.
 
+`query` is a literal substring match against a fact's text and
+tags, not a fuzzy or per-word search: a fact edited to reword it
+can stop matching a query that used to find it, even though the
+fact itself is untouched (confirmed live: editing "the demo test
+runner is..." to "...node --test (built-in runner)..." broke a
+`"test runner"` query while a single-word `"vitest"` query kept
+matching). An empty result means "no fact matches this exact
+phrase," not "no fact exists" — try a shorter or different
+substring, or `{}` with no query, before concluding nothing is
+recorded.
+
 ### Reflect
 
 Ask memory to synthesize a short answer over the facts it holds,

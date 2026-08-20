@@ -1,7 +1,7 @@
 {
 	"name": "agentic-harness",
 	"displayName": "Agentic Harness",
-	"description": "Tool-backed workflow discipline (TDD loops, and more to come) shared with the pi coding agent via agentic-harness.core.",
+	"description": "Tool-backed workflow discipline shared with the pi coding agent via agentic-harness.core: TDD loops, quest tracking, durable memory, verification checks, Slack access, and write-confirmation guardians for commits, PRs, issues, and destructive history rewrites.",
 	"version": "0.1.0",
 	"author": {
 		"name": "Joel Gerber"
