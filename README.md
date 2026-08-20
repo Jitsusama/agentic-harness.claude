@@ -25,6 +25,14 @@ the domain logic.
     exact corrected (attributed) command for the agent to retry with,
     since a hook can't rewrite the call in place the way pi's
     attribution-interceptor can.
+  - asks before a destructive git command (`git push --force`,
+    `git reset --hard`, `git rebase`, `git clean -f`, `git branch -D`,
+    ...), naming the risk and whether it's recoverable via reflog.
+    history-guardian's own review never rewrites, so `ask` is a
+    complete adapter for it: Claude Code's native permission prompt
+    stands in for pi's own allow/block confirmation exactly, with no
+    deny-and-retry approximation needed. A hard-rule deny above still
+    wins over an ask when a command trips both.
 
   A command this hook doesn't flag gets no explicit decision, so the
   normal permission flow (other hooks, the user's permission mode)
@@ -38,10 +46,10 @@ commit from a human one typed in the same repo while the plugin is
 active, unlike pi's per-call env var. Given the domain's own transparency-
 first ethos, that's an accepted trade, not an oversight.
 
-Guardians (commit review and the rest, which need pi's rewrite-as-inline-
-edit capability that a hook can only approximate as deny-and-retry) are
-still ahead, each needing its own adapter decision rather than a
-mechanical port.
+Other guardians (commit review, PR/issue review, which need pi's
+rewrite-as-inline-edit capability that a hook can only approximate as
+deny-and-retry) are still ahead, each needing its own adapter decision
+rather than a mechanical port.
 
 ## Requirements
 
