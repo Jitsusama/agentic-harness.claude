@@ -38,17 +38,23 @@ credentials.
 agentic-harness-core slack-auth login
 ```
 
-This opens a real, visible Chrome window and navigates to Slack.
-**Tell the user before running it**: they need to log into Slack in
-the window that opens (or already be logged in, in which case it
-finishes at once) *and then click into a specific workspace* - the
-browser profile is fresh every run, so app.slack.com shows a
-workspace picker after sign-in rather than opening one directly, and
-nothing is extractable until an actual workspace's client has
-loaded. The command blocks until it detects the session is live or
-five minutes pass, so don't cancel it early just because it hasn't
-returned yet - but if several minutes pass with nothing happening,
-that missed "pick a workspace" step is the first thing to check.
+This opens a real, visible Chrome window straight to Slack's sign-in
+page. **Tell the user these steps before running it** (the command
+also prints the same guidance to stderr the moment the window opens,
+but say it in chat too - the window opens immediately and they
+shouldn't have to wait on anything to know what to do):
+
+1. Sign in with your email (or SSO) as usual.
+2. If asked to pick a workspace, click into the one you want - the
+   browser profile is fresh every run, so there's no existing
+   session to skip this with.
+3. If a screen offers "Open Slack" (desktop app) vs "use Slack in
+   your browser", click "use Slack in your browser" - this tries
+   that automatically, but don't wait on it if it looks slow.
+
+The command blocks until it detects the session is live or five
+minutes pass, so don't cancel it early just because it hasn't
+returned yet.
 
 On success:
 
