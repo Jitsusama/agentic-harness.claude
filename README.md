@@ -8,9 +8,16 @@ the domain logic.
 
 ## What's here
 
-- `skills/tdd/` — teaches Claude Code test-driven development and how to
-  drive core's TDD loop through the `agentic-harness-core` CLI (installed
-  separately; see below).
+- `skills/tdd/`, `skills/quest/`, `skills/memory/`, `skills/verify/` —
+  teach Claude Code the matching agentic-harness.core workflow, each
+  driven through the `agentic-harness-core` CLI (installed separately;
+  see below).
+- `skills/slack/` — sets up and checks Slack access via browser-session
+  extraction (no Slack app needed), the same setup-wizard mechanism pi's
+  own interactive wizard offers as its "recommended" path. A setup
+  wizard intercepts nothing, so unlike the guardians below it needed no
+  hook at all - just a CLI surface for the skill to call and let Claude
+  carry the human-facing conversation itself.
 - `hooks/hooks.json` — a `PreToolUse` hook on `Bash` calling
   `agentic-harness-core hook pre-bash`, which:
   - denies commands that violate pi's git-cli/github-cli conventions
@@ -62,6 +69,13 @@ review-integration (the review-tool workflow, not the guardian) is
 still ahead: its own gate is a richer interactive surface than a
 single ask/deny decision covers, and needs its own adapter design
 rather than the pattern the guardians above share.
+
+Google Workspace access follows the same setup-wizard pattern
+`skills/slack/` established, but isn't built yet: it needs its own
+OAuth app (client ID/secret, no zero-setup browser-extraction
+equivalent) plus a device-flow poll loop, both already portable in
+agentic-harness.core's `google` package, just not yet wired to a CLI
+verb here.
 
 ## Requirements
 
