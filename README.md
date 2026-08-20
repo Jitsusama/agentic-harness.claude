@@ -33,6 +33,18 @@ the domain logic.
     stands in for pi's own allow/block confirmation exactly, with no
     deny-and-retry approximation needed. A hard-rule deny above still
     wins over an ask when a command trips both.
+  - runs commit/PR/issue review: the same content gates pi's own
+    guardians run (prose, section, title, redirect), denying outright
+    on a violation exactly as pi does, then asking with the message
+    or title/body once a command clears every gate. pi's own
+    guardians already fall back to allowing outright in a context
+    with no UI to show a panel in - the content gates are the actual
+    enforcement there too, the panel only the confirmation on top -
+    so asking here is not an approximation of anything pi does; it's
+    genuinely more protection than pi's own headless fallback offers,
+    since an ordinary Claude Code chat has a human present. None of
+    the three rewrites either, so `ask` is complete for all of them
+    the same way it is for history-guardian.
 
   A command this hook doesn't flag gets no explicit decision, so the
   normal permission flow (other hooks, the user's permission mode)
@@ -46,10 +58,10 @@ commit from a human one typed in the same repo while the plugin is
 active, unlike pi's per-call env var. Given the domain's own transparency-
 first ethos, that's an accepted trade, not an oversight.
 
-Other guardians (commit review, PR/issue review, which need pi's
-rewrite-as-inline-edit capability that a hook can only approximate as
-deny-and-retry) are still ahead, each needing its own adapter decision
-rather than a mechanical port.
+review-integration (the review-tool workflow, not the guardian) is
+still ahead: its own gate is a richer interactive surface than a
+single ask/deny decision covers, and needs its own adapter design
+rather than the pattern the guardians above share.
 
 ## Requirements
 
