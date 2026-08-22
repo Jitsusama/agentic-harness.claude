@@ -52,11 +52,15 @@ most notes have none.
 
 ## Where the archive lives
 
-Unlike quest's `questsRoot` -- one shared, cross-repo location every
-tool on the machine sees by default, because a quest tree is a
-single campaign log -- a notes archive is a property of the repo
-you're standing in. `notesRoot` defaults to the current working
-directory. Point elsewhere with `--notes-root <path>` or the
+`notesRoot` resolves the same way quest's `questsRoot` does: a
+single default location every tool on the machine sees, not
+something that shifts under you as cwd changes. There's no sibling
+pi extension for notes to alias onto (quest's default points at the
+exact path agentic-harness.pi's quest-workflow extension already
+writes to), so notes gets its own XDG-rooted default instead --
+`$XDG_DATA_HOME/agentic-harness/notes`, falling back to
+`~/.local/share/agentic-harness/notes`. Point at a specific archive
+(e.g. a repo's notes tree) with `--notes-root <path>` or the
 `AGENTIC_HARNESS_NOTES_ROOT` env var.
 
 ## Commands
