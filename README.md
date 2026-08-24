@@ -12,6 +12,13 @@ the domain logic.
   teach Claude Code the matching agentic-harness.core workflow, each
   driven through the `agentic-harness-core` CLI (installed separately;
   see below).
+- `skills/web-check/` — judges a live page through
+  `agentic-harness-core web check`: reduced-motion honesty,
+  orphans and runts from real line boxes, server render versus
+  hydrated page, and web vitals as medians over several loads.
+  The same four judgments pi's `browser_check` exposes as kinds,
+  rendered by the same core code so the two consumers say the
+  same words.
 - `skills/slack/` — sets up and checks Slack access via browser-session
   extraction (no Slack app needed), the same setup-wizard mechanism pi's
   own interactive wizard offers as its "recommended" path. A setup
